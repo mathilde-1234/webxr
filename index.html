@@ -4,23 +4,44 @@
     <meta charset="UTF-8" />
     <title>Ma scène XR</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aframe-meta-controls/dist/aframe-meta-controls.min.js"></script>
   </head>
   <body>
     <a-scene vr-mode-ui="enabled: true">
-      <a-camera position="0 1.6 0"> </a-camera>
+      <!-- Caméra utilisateur -->
+      <a-camera position="0 1.6 0"></a-camera>
 
+      <!-- Ciel 360° -->
       <a-sky
         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"
         rotation="0 100 0"
       ></a-sky>
-   <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
-<a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
-      
 
+      <!-- Mains visibles -->
+      <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
+      <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
 
-     <!-- <a-box color="#FF0000"position="0 1 1" rotation="0 45 0"></a-box> -->
+      <!-- Le cube qui va suivre la main droite -->
+      <a-box id="followCube" color="#FF0000" depth="0.3" height="0.3" width="0.3"></a-box>
     </a-scene>
+
+    <script>
+      AFRAME.registerComponent("follow-hand", {
+        tick: function () {
+          const hand = document.querySelector("#rightHand");
+          const cube = document.querySelector("#followCube");
+          if (hand && cube && hand.object3D.visible) {
+            // on récupère la position de la main et on la copie au cube
+            const handPos = hand.object3D.position;
+            cube.object3D.position.copy(handPos);
+            // Optionnel : décaler un peu le cube pour le voir clairement
+            cube.object3D.position.y += 0.2;
+          }
+        }
+      });
+
+      document.querySelector("a-scene").addEventListener("loaded", function () {
+        document.querySelector("#followCube").setAttribute("follow-hand", "");
+      });
+    </script>
   </body>
 </html>
