@@ -7,20 +7,16 @@
   </head>
   <body>
     <a-scene vr-mode-ui="enabled: true">
-      <!-- Caméra utilisateur -->
       <a-camera position="0 1.6 0"></a-camera>
-
-      <!-- Ciel 360° -->
       <a-sky
         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"
         rotation="0 100 0"
       ></a-sky>
 
-      <!-- Mains visibles -->
       <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
       <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
 
-      <!-- Le cube qui va suivre la main droite -->
+
       <a-box id="followCube" color="#FF0000" depth="0.3" height="0.3" width="0.3"></a-box>
     </a-scene>
 
