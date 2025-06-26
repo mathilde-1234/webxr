@@ -4,74 +4,45 @@
     <meta charset="UTF-8" />
     <title>Ma scène XR</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-      
   </head>
   <body>
     <a-scene vr-mode-ui="enabled: true" obb-collider="showColliders: false">
       <a-assets>
         <a-asset-item id="katanaModel" src="katana.glb"></a-asset-item>
-      </a-assets>
-       <a-assets>
         <a-asset-item id="pommeModel" src="Apple.glb"></a-asset-item>
-      </a-assets>
-       <a-assets>
         <a-asset-item id="bananeModel" src="Banana.glb"></a-asset-item>
-      </a-assets>
-        <a-assets>
         <a-asset-item id="poireModel" src="Pear.glb"></a-asset-item>
-      </a-assets>
-      <a-assets>
         <a-asset-item id="ananasModel" src="Pineapple.glb"></a-asset-item>
-      </a-assets>
-       <a-assets>
         <a-asset-item id="pastequeModel" src="Watermelon.glb"></a-asset-item>
-      </a-assets>
-       <a-assets>
         <a-asset-item id="pecheModel" src="Peach.glb"></a-asset-item>
-      </a-assets>
-      <a-assets>
         <a-asset-item id="fraiseModel" src="Strawberry.glb"></a-asset-item>
-      </a-assets>
-      <a-asset-item id="orangeModel" src="Orange.glb"></a-asset-item>
-      </a-assets>
-      <a-asset-item id="raisinsModel" src="Grapes.glb"></a-asset-item>
+        <a-asset-item id="orangeModel" src="Orange.glb"></a-asset-item>
+        <a-asset-item id="raisinsModel" src="Grapes.glb"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 1.6 0"></a-camera>
 
-      
       <a-sky
         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"
         rotation="0 100 0"
       ></a-sky>
-    
-      <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" rotation="90 -90 180" obb-collider > 
-        <a-gltf-model id="katana" src="#katanaModel" scale="0.75 0.25 0.75" rotation="90  90 -90" obb-collider position="0.085 0.7 0.4">
-        </a-gltf-model></a-entity>
-      
-      <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"rotation="90 -90 180" obb-collider></a-entity>
-     
-     <a-gltf-model id="pomme" src="#pommeModel">
-        </a-gltf-model>
-       <a-gltf-model id="banane" src="#bananeModel">
-        </a-gltf-model>
-       <a-gltf-model id="poire" src="#poireModel">
-        </a-gltf-model>
-       <a-gltf-model id="ananas" src="#ananasModel">
-        </a-gltf-model>
-       <a-gltf-model id="pasteque" src="#pastequeModel">
-        </a-gltf-model>
-       <a-gltf-model id="peche" src="#pecheModel">
-        </a-gltf-model>
-       <a-gltf-model id="fraise" src="#fraiseModel">
-        </a-gltf-model>
-       <a-gltf-model id="orange" src="#orangeModel">
-        </a-gltf-model>
-      <a-gltf-model id="raisins" src="#raisinsModel">
-        </a-gltf-model>
+
+      <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" rotation="90 -90 180" obb-collider> 
+        <a-gltf-model id="katana" src="#katanaModel" scale="0.75 0.25 0.75" rotation="90 90 -90" obb-collider position="0.085 0.7 0.4"></a-gltf-model>
+      </a-entity>
+
+      <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" rotation="90 -90 180" obb-collider></a-entity>
+
+      <!-- Ajout des fruits avec position et échelle -->
+      <a-gltf-model src="#pommeModel" scale="0.5 0.5 0.5" position="-1 1 -2"></a-gltf-model>
+      <a-gltf-model src="#bananeModel" scale="0.5 0.5 0.5" position="0 1 -2"></a-gltf-model>
+      <a-gltf-model src="#poireModel" scale="0.5 0.5 0.5" position="1 1 -2"></a-gltf-model>
+      <a-gltf-model src="#ananasModel" scale="0.5 0.5 0.5" position="-1 0.5 -3"></a-gltf-model>
+      <a-gltf-model src="#pastequeModel" scale="0.5 0.5 0.5" position="0 0.5 -3"></a-gltf-model>
+      <a-gltf-model src="#pecheModel" scale="0.5 0.5 0.5" position="1 0.5 -3"></a-gltf-model>
+      <a-gltf-model src="#fraiseModel" scale="0.5 0.5 0.5" position="-1 -0.5 -4"></a-gltf-model>
+      <a-gltf-model src="#orangeModel" scale="0.5 0.5 0.5" position="0 -0.5 -4"></a-gltf-model>
+      <a-gltf-model src="#raisinsModel" scale="0.5 0.5 0.5" position="1 -0.5 -4"></a-gltf-model>
     </a-scene>
-
-  
-
   </body>
 </html>
