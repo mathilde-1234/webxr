@@ -1,32 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Navigation VR</title>
+    <title>Ma scène XR</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-meta-controls/dist/aframe-meta-controls.min.js"></script>
   </head>
   <body>
-    <a-scene>
-      <!-- Sol -->
-      <a-plane rotation="-90 0 0" width="100" height="100" color="#7BC8A4"></a-plane>
+    <a-scene vr-mode-ui="enabled: true">
+      <a-camera position="0 1.6 0"> </a-camera>
 
-      <!-- Ciel -->
-      <a-sky color="#ECECEC"></a-sky>
+      <a-sky
+        src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"
+        rotation="0 100 0"
+      ></a-sky>
+   <a-entity id="leftHand" hand-tracking-controls="hand: left;"></a-entity>
+<a-entity id="rightHand" hand-tracking-controls="hand: right;"></a-entity>
 
-      <!-- RIG de déplacement avec mouvement + caméra -->
-      <a-entity id="rig" movement-controls position="0 1.6 0">
-        <a-entity 
-          camera 
-          position="0 0 0" 
-          look-controls 
-          wasd-controls-enabled="false">
-        </a-entity>
 
-        <!-- Contrôleurs détectés (avec WebXR) -->
-        <a-entity tracked-controls-webxr="hand: left"></a-entity>
-        <a-entity tracked-controls-webxr="hand: right"></a-entity>
-      </a-entity>
+     <!-- <a-box color="#FF0000"position="0 1 1" rotation="0 45 0"></a-box> -->
     </a-scene>
   </body>
 </html>
