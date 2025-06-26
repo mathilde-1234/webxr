@@ -1,64 +1,23 @@
-<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <title>Ma scène XR</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-
-    <!-- Composants supplémentaires -->
     <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
-    <script src="https://unpkg.com/super-hands/dist/super-hands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-meta-controls/dist/aframe-meta-controls.min.js"></script>
   </head>
   <body>
-    <a-scene
-      vr-mode-ui="enabled: true"
-      physics="gravity: -9.8"
-      embedded
-      cursor="rayOrigin: mouse"
-    >
-      <!-- Caméra -->
-      <a-entity id="cameraRig">
-        <a-camera position="0 1.6 0"></a-camera>
-      </a-entity>
+    <a-scene vr-mode-ui="enabled: true">
+      <a-camera position="0 1.6 0"> </a-camera>
 
-      <!-- Ciel 360° -->
       <a-sky
         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"
         rotation="0 100 0"
       ></a-sky>
+     <a-entity id="leftHand" hand-tracking-grab-controls="hand: left;"></a-entity>
+<a-entity id="rightHand" hand-tracking-grab-controls="hand: right;"></a-entity>
 
-      <!-- Mains avec suivi -->
-      <a-entity
-        id="leftHand"
-        hand-tracking-controls="hand: left"
-        super-hands
-      ></a-entity>
-      <a-entity
-        id="rightHand"
-        hand-tracking-controls="hand: right"
-        super-hands
-      ></a-entity>
-
-      <!-- Objet interactif -->
-      <a-box
-        color="#FF0000"
-        dynamic-body
-        grabbable
-        stretchable
-        draggable
-        position="0 1 1"
-        rotation="0 45 0"
-      ></a-box>
-
-      <!-- Sol -->
-      <a-plane
-        rotation="-90 0 0"
-        width="20"
-        height="20"
-        color="#CCC"
-        static-body
-      ></a-plane>
+      <a-box color="#FF0000" grabbable position="0 1 1" rotation="0 45 0"></a-box>
     </a-scene>
   </body>
 </html>
