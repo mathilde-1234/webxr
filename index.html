@@ -4,32 +4,7 @@
     <meta charset="UTF-8" />
     <title>Ma scène XR</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-  </head>
-  <body>
-    <a-scene vr-mode-ui="enabled: true">
-      <a-assets>
-        <a-asset-item id="katanaModel" src="katana.glb"></a-asset-item>
-      </a-assets>
-
-      <!-- Caméra -->
-      <a-camera position="0 1.6 0"></a-camera>
-
-      <!-- Ciel -->
-      <a-sky
-        src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"
-        rotation="0 100 0"
-      ></a-sky>
-
-      <!-- Mains -->
-      <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
-      <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
-
-      <!-- Modèle Katana -->
-      <a-gltf-model id="katana" src="#katanaModel" scale="0.5 0.5 0.5"></a-gltf-model>
-    </a-scene>
-
-    <!-- Script après chargement du DOM -->
-    <script>
+        <script>
       AFRAME.registerComponent("follow-hand", {
         tick: function () {
           const hand = document.querySelector("#rightHand");
@@ -46,5 +21,29 @@
         document.querySelector("#katana").setAttribute("follow-hand", "");
       });
     </script>
+  </head>
+  <body>
+    <a-scene vr-mode-ui="enabled: true">
+      <a-assets>
+        <a-asset-item id="katanaModel" src="katana.glb"></a-asset-item>
+      </a-assets>
+
+      <a-camera position="0 1.6 0"></a-camera>
+
+      
+      <a-sky
+        src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"
+        rotation="0 100 0"
+      ></a-sky>
+    
+      <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
+      <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
+
+     
+      <a-gltf-model id="katana" src="#katanaModel" scale="0.75 0.25 0.75"></a-gltf-model>
+    </a-scene>
+
+  
+
   </body>
 </html>
