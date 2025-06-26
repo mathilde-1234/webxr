@@ -4,44 +4,47 @@
     <meta charset="UTF-8" />
     <title>Ma scène XR</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-     <script>
-      AFRAME.registerComponent("follow-hand", {
-        tick: function () {
-          const hand = document.querySelector("#rightHand");
-          const cube = document.querySelector("#followCube");
-          if (hand && cube && hand.object3D.visible) {
-            // on récupère la position de la main et on la copie au cube
-            const handPos = hand.object3D.position;
-            cube.object3D.position.copy(handPos);
-            cube.object3D.position.y += 0.2;
-          }
-        }
-      });
-
-      document.querySelector("a-scene").addEventListener("loaded", function () {
-        document.querySelector("#followCube").setAttribute("follow-hand", "");
-      });
-    </script>
   </head>
   <body>
     <a-scene vr-mode-ui="enabled: true">
+      <a-assets>
+        <a-asset-item id="katanaModel" src="katana.glb"></a-asset-item>
+      </a-assets>
+
+      <!-- Caméra -->
       <a-camera position="0 1.6 0"></a-camera>
+
+      <!-- Ciel -->
       <a-sky
         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"
         rotation="0 100 0"
       ></a-sky>
 
+      <!-- Mains -->
       <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
       <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
 
-
-      <a-box id="followCube" color="#FFFFFF" depth="0.3" height="0.3" width="0.3"></a-box>
-      a-assets>
-    <a-asset-item id="katana" src="katana.glb"></a-asset-item>
-  </a-assets>
-  <a-gltf-model src="#katana"></a-gltf-model>
+      <!-- Modèle Katana -->
+      <a-gltf-model id="katana" src="#katanaModel" scale="0.5 0.5 0.5"></a-gltf-model>
     </a-scene>
 
-   
+    <!-- Script après chargement du DOM -->
+    <script>
+      AFRAME.registerComponent("follow-hand", {
+        tick: function () {
+          const hand = document.querySelector("#rightHand");
+          const ckatana = document.querySelector("#katana");
+          if (hand && ckatana && hand.object3D.visible) {
+            const handPos = hand.object3D.position;
+            ckatana.object3D.position.copy(handPos);
+            ckatana.object3D.position.y += 0.2;
+          }
+        }
+      });
+
+      window.addEventListener("DOMContentLoaded", function () {
+        document.querySelector("#katana").setAttribute("follow-hand", "");
+      });
+    </script>
   </body>
 </html>
