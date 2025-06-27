@@ -34,7 +34,9 @@
       <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" rotation="90 -90 180" obb-collider></a-entity>
 
       <!-- Ajout des fruits avec position et échelle -->
-      <a-gltf-model src="#pommeModel" id="pomme" scale="0.5 0.5 0.5" position="-1 1 -2"></a-gltf-model>
+      <a-gltf-model src="#pommeModel" id="pomme" scale="0.5 0.5 0.5"  position="0 -1 -2"
+  animation="property: position; to: 0 0 -2; dur: 2000; delay: 0; easing: ease-in"></a-gltf-model>
+></a-gltf-model>
       <a-gltf-model src="#bananeModel" id="banane" scale="0.5 0.5 0.5" position="0 1 -2"></a-gltf-model>
       <a-gltf-model src="#poireModel" id="poire" scale="0.5 0.5 0.5" position="1 1 -2"></a-gltf-model>
       <a-gltf-model src="#ananasModel" id="ananas" scale="0.5 0.5 0.5" position="-1 0.5 -3"></a-gltf-model>
